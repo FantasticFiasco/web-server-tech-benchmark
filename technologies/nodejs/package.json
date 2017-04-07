@@ -1,0 +1,36 @@
+{
+  "name": "web-server-technology-benchmark",
+  "version": "1.0.0",
+  "description": "NodeJS version of the Web Server Technology Benchmark.",
+  "keywords": [
+    "web",
+    "server",
+    "technology",
+    "benchmark"
+  ],
+  "author": "Mattias Kindborg",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/FantasticFiasco/web-server-tech-benchmark#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FantasticFiasco/web-server-tech-benchmark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FantasticFiasco/web-server-tech-benchmark/issues"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint **/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pg": "6.1.5",
+    "request": "2.81.0",
+    "restify": "4.3.0"
+  },
+  "devDependencies": {
+    "eslint": "3.19.0",
+    "eslint-config-google": "0.7.1"
+  }
+}
