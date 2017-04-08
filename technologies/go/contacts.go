@@ -27,8 +27,10 @@ func CreateContact(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 	var contact Contact
 	json.NewDecoder(r.Body).Decode(&contact)
 
-	db.QueryRow("INSERT INTO contact (firstName, surname) VALUES ($1, $2) RETURNING id", contact.FirstName, contact.Surname).
+	err := db.QueryRow("INSERT INTO contact (firstName, surname) VALUES ($1, $2) RETURNING id", contact.FirstName, contact.Surname).
 		Scan(&contact.Id)
+
+	checkErr(err)
 
 	w.Header().Set("Location", fmt.Sprintf("http://%s/contacts/%d", r.Host, contact.Id))
 	w.Header().Set("Content-Type", "application/json")
@@ -39,22 +41,28 @@ func CreateContact(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 func GetContact(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	contact := Contact {}
 
-	db.QueryRow("SELECT * FROM contact WHERE Id = $1", ps.ByName("id")).
+	err := db.QueryRow("SELECT * FROM contact WHERE Id = $1", ps.ByName("id")).
 		Scan(&contact.Id, &contact.FirstName, &contact.Surname)
+
+	checkErr(err)
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(contact)
 }
 
 func GetContacts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	rows, _ := db.Query("SELECT * FROM contact")
+	rows, err := db.Query("SELECT * FROM contact")
 	defer rows.Close()
+	checkErr(err)
 
 	contacts := make([]Contact, 0)
 
 	for rows.Next() {
 		contact := Contact {}
-		rows.Scan(&contact.Id, &contact.FirstName, &contact.Surname)
+		err = rows.Scan(&contact.Id, &contact.FirstName, &contact.Surname)
+
+		checkErr(err)
+
 		contacts = append(contacts, contact)
 	}
 
@@ -63,9 +71,17 @@ func GetContacts(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func DeleteContact(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	db.Exec("DELETE FROM contact WHERE Id = $1", ps.ByName("id"))
+	_, err := db.Exec("DELETE FROM contact WHERE Id = $1", ps.ByName("id"))
+
+	checkErr(err)
 
 	w.WriteHeader(http.StatusNoContent)
+}
+
+func checkErr(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
 
 type Contact struct {
