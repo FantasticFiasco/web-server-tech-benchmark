@@ -13,9 +13,9 @@ This directory contain files used when load testing the application on the web s
 
 ## Prerequisites
 
-1. Download a preconfigured version of [jMeter](https://drive.google.com/open?id=0B0opfJpdbO8fcDh4UlFFVVdCTFk)
+1. Download a preconfigured version of [jMeter](https://drive.google.com/open?id=0B0opfJpdbO8fYXlLbFhzMFpTSTA)
 1. Unpack jMeter
-1. Add the jMeter `bin` directory as an environment variable
+1. Add the jMeter `bin` directory to the environment variables
 
 ## Edit Load Test
 
@@ -36,4 +36,3 @@ jmeter -n -t LoadTest.jmx -Jhostname="[HOSTNAME]" -Jport="[PORT]"
 where `[HOSTNAME]` and `[PORT]` points to the web server.
 
 After a run, the results can be found in a sub-directory called `results`.
-
