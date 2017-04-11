@@ -6,7 +6,7 @@ This project is focused on comparing the performance of web servers implemented 
 
 - .NET Core running on Kestrel
 
-A comparison between languages can be found [here](./COMPARISON.md).
+A comparison between languages can be found [here](./BENCHMARK.md).
 
 ## Web Server
 
