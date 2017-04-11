@@ -4,7 +4,9 @@
 
 This project is focused on comparing the performance of web servers implemented in a small subset of programming languages. The project currently has benchmarks for:
 
-- .NET Core running on Kestrel
+- .NET Core
+- Go
+- NodeJS
 
 A comparison between languages can be found [here](./BENCHMARK.md).
 
