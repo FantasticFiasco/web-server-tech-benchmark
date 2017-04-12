@@ -19,6 +19,7 @@ func main() {
 	router.GET("/relay/:key", Relay)
 
 	// Contacts
+	InitDb()
 	router.POST("/contacts", CreateContact)
 	router.GET("/contacts/:id", GetContact)
 	router.GET("/contacts", GetContacts)

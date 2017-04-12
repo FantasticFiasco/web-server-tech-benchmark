@@ -10,6 +10,7 @@ const config = {
     database: database,
     user: username,
     password: password,
+    max: 300,
 };
 
 const pool = new pg.Pool(config);

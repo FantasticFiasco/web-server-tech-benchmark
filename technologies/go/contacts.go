@@ -10,18 +10,23 @@ import (
 	"os"
 )
 
-var databaseHost = os.Getenv("Contacts:DatabaseHost")
-var databaseName = os.Getenv("Contacts:DatabaseName")
-var databaseUsername = os.Getenv("Contacts:DatabaseUsername")
-var databasePassword = os.Getenv("Contacts:DatabasePassword")
+var db* sql.DB
 
-var connectionString = fmt.Sprintf("host=%s dbname=%s user=%s password=%s",
-	databaseHost,
-	databaseName,
-	databaseUsername,
-	databasePassword)
+func InitDb() {
+	var databaseHost = os.Getenv("Contacts:DatabaseHost")
+	var databaseName = os.Getenv("Contacts:DatabaseName")
+	var databaseUsername = os.Getenv("Contacts:DatabaseUsername")
+	var databasePassword = os.Getenv("Contacts:DatabasePassword")
 
-var db, _ = sql.Open("postgres", connectionString)
+	var connectionString = fmt.Sprintf("host=%s dbname=%s user=%s password=%s",
+		databaseHost,
+		databaseName,
+		databaseUsername,
+		databasePassword)
+	
+	db, _ = sql.Open("postgres", connectionString)
+	db.SetMaxOpenConns(300)
+}
 
 func CreateContact(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var contact Contact

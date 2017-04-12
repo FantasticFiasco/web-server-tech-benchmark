@@ -16,7 +16,7 @@ namespace DotNetCore.Contacts
 		public ContactRepository(IConfiguration configuration)
 		{
 			var connectionString = string.Format(
-				"Host={0};Username={1};Password={2};Database={3}",
+				"Host={0};Username={1};Password={2};Database={3};Maximum Pool Size=300",
 				configuration["Contacts:DatabaseHost"],
 				configuration["Contacts:DatabaseUsername"],
 				configuration["Contacts:DatabasePassword"],
