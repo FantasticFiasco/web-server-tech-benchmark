@@ -10,7 +10,7 @@ exports.create = (req, res, next) => {
             const contact = {
                 id: result.rows[0].id,
                 firstName: req.body.firstName,
-                surname: req.body.surname
+                surname: req.body.surname,
             };
 
             res.header('Location', `http://${req.headers.host}/contacts/${contact.id}`);
