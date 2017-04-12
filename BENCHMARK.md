@@ -34,9 +34,9 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 
 | Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
-| .NET Core  | __0.00%__ | 34.13                      | 42                   | 49                   | 71                   | 4398.77     |
-| Go         | __0.00%__ | __33.13__                  | __35__               | __37__               | __70__               | __4530.46__ |
-| NodeJS     | __0.00%__ | 35.87                      | 45                   | 48                   | 89                   | 4185.86     |
+| .NET Core  | __0.00%__ | 33.81                      | 39                   | 42                   | __69__               | 4440.49     |
+| Go         | __0.00%__ | __33.13__                  | __35__               | __37__               | 70                   | __4530.46__ |
+| NodeJS     | __0.00%__ | 34.81                      | 44                   | 48                   | 82                   | 4312.82     |
 
 #### Response Time Over Threads
 
@@ -86,7 +86,7 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
 | .NET Core  | __0.00%__ | 39.53                      | 58                   | 61                   | 87                   | 3792.15     |
 | Go         | __0.00%__ | __33.37__                  | __35__               | __38__               | __69__               | __4473.00__ |
-| NodeJS     | __0.00%__ | 40.08                      | 61                   | 73                   | 124                  | 3739.24     |
+| NodeJS     | __0.00%__ | 38.58                      | 56                   | 66                   | 114                  | 3887.36     |
 
 #### Response Time Over Threads
 
@@ -134,9 +134,9 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 
 | Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
-| .NET Core  | __0.00%__ | 71.42                      | 142.00               | 149                  | __171__              | 2101.79     |
+| .NET Core  | __0.00%__ | 70.76                      | 126                  | 140                  | __162__              | 2124.31     |
 | Go         | 0.01%     | __50.83__                  | __57__               | __67__               | 3081                 | __2908.68__ |
-| NodeJS     | __0.00%__ | 123.13                     | 273                  | 313                  | 362                  | 1221.34     |
+| NodeJS     | __0.00%__ | 119.25                     | 280                  | 324                  | 363                  | 1261.04     |
 
 #### Response Time Over Threads
 
@@ -184,11 +184,11 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 
 The benchmarks have been run against a database pre-populated with 1,000,000 contacts.
 
-| Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput |
-| ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ---------- |
-| .NET Core  | 5.00%     | __158.91__                 | __213__              | __3253__             | 15185                | __975.22__ |
-| Go         | __0.00%__ | 415.87                     | 1671                 | 1856                 | __2898__             | 355.24     |
-| NodeJS     | 100.00%   | 120130.25                  | 120161               | 120161               | 120161               | 0.01       |
+| Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
+| ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
+| .NET Core  | 0.03%     | 89.81                      | __136__              | __155__              | 272                  | 1668.18     |
+| Go         | __0.00%__ | 253.63                     | 899                  | 927                  | 1021                 | 592.79      |
+| NodeJS     | __0.00%__ | __80.75__                  | 175                  | 209                  | __243__              | __1861.59__ |
 
 #### Response Time Over Threads
 
