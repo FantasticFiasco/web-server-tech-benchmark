@@ -12,11 +12,11 @@ A comparison between languages can be found [here](./BENCHMARK.md).
 
 ## Web Server
 
-The HTTP API of the web server is defined in the following chapters, and the load test will benchmark each of these API aspects in sequence.
+The HTTP API of the web server is defined in the following chapters, and the benchmark will run each of these API aspects in sequence.
 
 ## Health Benchmark
 
-Route replying empty responses back to the client. This benchmark is focused on determining the performance of the web server and its efficiency in handling the request and response pipeline.
+Route returning empty responses back to the client. This benchmark is focused on determining the performance of the web server and its efficiency in handling the request and response pipeline.
 
 ![Health benchmark UML](https://g.gravizo.com/source/custom_health_uml?https%3A%2F%2Fraw.githubusercontent.com%2FFantasticFiasco%2Fweb-server-tech-benchmark%2Fmaster%2Fdesign%2FUML.md)
 
@@ -38,7 +38,7 @@ GET /health HTTP/1.1
 
 ## Echo Benchmark
 
-Route echoing a text back to the client. This benchmark is focused on reading incoming requests and return responses based on the parameter in the request URI.
+Route echoing a text back to the client. This benchmark is focused on reading incoming requests and return responses based on the parameters in the request URI.
 
 ![Echo benchmark UML](https://g.gravizo.com/source/custom_echo_uml?https%3A%2F%2Fraw.githubusercontent.com%2FFantasticFiasco%2Fweb-server-tech-benchmark%2Fmaster%2Fdesign%2FUML.md)
 
@@ -108,7 +108,7 @@ The relay service is dependent on the key/value service, and the implementation 
 GET /relay/{key} HTTP/1.1
 ```
 
-The key should be used in the request to the key/value service.
+The key should be used in a request to the key/value service.
 
 #### Response
 
@@ -124,7 +124,7 @@ Content-Type: application/json
 
 ## Contacts Benchmark
 
-Routes describe a standard CRUD application that stores its state in a PostgreSQL database. This benchmark is focused on database operations, and highlights the latency penalties associated with using a database.
+Routes describing a standard CRUD application that stores its state in a PostgreSQL database. This benchmark is focused on database operations, and highlights the latency penalties associated with using a database.
 
 ![Contacts benchmark UML](https://g.gravizo.com/source/custom_contacts_uml?https%3A%2F%2Fraw.githubusercontent.com%2FFantasticFiasco%2Fweb-server-tech-benchmark%2Fmaster%2Fdesign%2FUML.md)
 
