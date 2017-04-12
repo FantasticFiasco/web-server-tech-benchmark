@@ -1,6 +1,6 @@
 # Benchmark
 
-## Driver
+## Test Driver
 
 The system driving the benchmark is a desktop computer connected to a wired network.
 
@@ -15,7 +15,7 @@ The system driving the benchmark is a desktop computer connected to a wired netw
 
 ## System Under Test
 
-All benchmarks target a web server running in a Docker container on a EC2 instace in Amazon Web Services (AWS).
+All benchmarks are targeting a web server running in a Docker container on a EC2 instace in Amazon Web Services (AWS).
 
 | Parameter              | Value               |
 | ---------------------- | ------------------- |
@@ -26,7 +26,7 @@ All benchmarks target a web server running in a Docker container on a EC2 instac
 
 ## Duration And Threads
 
-Each benchmark is defined to run for 300 seconds, where a new thread is started each second. This linear load ramp up will hopefully show the performant range of the web server, and at what point it starts to struggle.
+Every benchmark is designed to run for 300 seconds. A benchmark starts with one thread and then continuously creates a new thread every second. This means that at the end of the benchmark the web server is handling 300 concurrent requests. This linear load ramp up will hopefully show the performant range of the web server, and at what point it starts to struggle.
 
 ## Results
 
