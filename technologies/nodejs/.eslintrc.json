@@ -5,6 +5,7 @@
     },
     "extends": "google",
     "rules": {
+        "linebreak-style": "off",
         "max-len": "off"
     }
 }
