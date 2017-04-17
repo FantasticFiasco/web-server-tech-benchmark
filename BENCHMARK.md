@@ -26,7 +26,7 @@ All benchmarks are targeting a web server running in a Docker container on a EC2
 
 ## Duration And Threads
 
-Every benchmark is designed to run for 300 seconds. A benchmark starts with one thread and then continuously creates a new thread every second. This means that at the end of the benchmark the web server is handling 300 concurrent requests. This linear load ramp up will hopefully show the performant range of the web server, and at what point it starts to struggle.
+Benchmarks have been configured to run for 300 seconds. A benchmark starts with one thread generating load and then continuously creates a new thread every second, until the duration of the benchmark is reached and 300 threads concurrently generates load on the web server. This linear load ramp up will hopefully show the performant range of the web server, and at what point it starts to struggle.
 
 ## Results
 
@@ -188,12 +188,12 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 
 ### Contacts
 
-The benchmark has been run against a RDS in Amazon Web Services (AWS) pre-populated with 1,000,000 contacts.
+The benchmark has been run against Amazon Relational Database Service (RDS) pre-populated with 1,000,000 contacts.
 
-| Parameter             | Value                            |
-| --------------------- | -------------------------------- |
-| DB Engine Version     | PostgreSQL 9.5.4-R1              |
-| DB Instance Class     | db.t2.medium - 2 vCPU, 4 GiB RAM |
+| Parameter             | Value                           |
+| --------------------- | ------------------------------- |
+| DB Engine Version     | PostgreSQL 9.5.4-R1             |
+| DB Instance Class     | db.t2.medium (2 vCPU, 4 GB RAM) |
 
 #### Summary
 

@@ -8,7 +8,7 @@ This project is focused on comparing the performance of web servers implemented 
 - Go
 - NodeJS
 
-A comparison between languages can be found [here](./BENCHMARK.md).
+A comparison between the languages can be found [here](./BENCHMARK.md).
 
 ## Web Server
 
@@ -124,7 +124,7 @@ Content-Type: application/json
 
 ## Contacts Benchmark
 
-Routes describing a standard CRUD application that stores its state in a PostgreSQL database. This benchmark is focused on database operations, and highlights the latency penalties associated with using a database.
+Routes describing a standard CRUD application that stores its state in a database. This benchmark is focused on database operations and highlights latency penalties associated with using a database.
 
 ![Contacts benchmark UML](https://g.gravizo.com/source/custom_contacts_uml?https%3A%2F%2Fraw.githubusercontent.com%2FFantasticFiasco%2Fweb-server-tech-benchmark%2Fmaster%2Fdesign%2FUML.md)
 
