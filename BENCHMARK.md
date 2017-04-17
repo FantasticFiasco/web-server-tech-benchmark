@@ -32,6 +32,8 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 
 ### Health
 
+#### Summary
+
 | Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
 | .NET Core  | __0.00%__ | 33.77                      | 39                   | 42                   | __69__               | 4445.11     |
@@ -81,6 +83,8 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 ![NodeJS Hits Per Second](./results/nodejs/health/flotHitsPerSecond.png)
 
 ### Echo
+
+#### Summary
 
 | Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
@@ -132,6 +136,8 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 
 ### Relay
 
+#### Summary
+
 | Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
 | .NET Core  | __0.00%__ | 69.56                      | 134                  | 141                  | __159__              | 2160.11     |
@@ -182,7 +188,14 @@ Every benchmark is designed to run for 300 seconds. A benchmark starts with one 
 
 ### Contacts
 
-The benchmarks have been run against a database pre-populated with 1,000,000 contacts.
+The benchmark has been run against a RDS in Amazon Web Services (AWS) pre-populated with 1,000,000 contacts.
+
+| Parameter             | Value                            |
+| --------------------- | -------------------------------- |
+| DB Engine Version     | PostgreSQL 9.5.4-R1              |
+| DB Instance Class     | db.t2.medium - 2 vCPU, 4 GiB RAM |
+
+#### Summary
 
 | Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
