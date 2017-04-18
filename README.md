@@ -10,7 +10,7 @@ This project is focused on comparing the performance of web servers implemented 
 - Go
 - NodeJS
 
-A comparison between the languages can be in the [benchmark](./BENCHMARK.md).
+A comparison between the languages can be found in the [benchmark](./BENCHMARK.md).
 
 ## Web Server
 
