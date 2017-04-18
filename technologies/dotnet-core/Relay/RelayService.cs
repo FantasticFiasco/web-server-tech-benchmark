@@ -20,10 +20,10 @@ namespace DotNetCore.Relay
 			};
 		}
 
-		public async Task<string> GetKeyValueAsync(string key)
+		public async Task<KeyValue> GetKeyValueAsync(string key)
 		{
 			var response = await client.GetAsync($"/store/{key}");
-			return await response.Content.ReadAsStringAsync();
+			return await response.Content.ReadAsAsync<KeyValue>();
 		}
 	}
 }
