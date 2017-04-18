@@ -20,13 +20,12 @@ func Store(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		return caesar(r, 18)
 	}, key)
 
-	keyValuePair := KeyValuePair {
-		Key: key,
+	keyValue := KeyValue {
 		Value: value,
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(keyValuePair)
+	json.NewEncoder(w).Encode(keyValue)
 }
 
 func main() {
