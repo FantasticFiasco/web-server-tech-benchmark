@@ -84,7 +84,6 @@ GET /store/{key} HTTP/1.1
 Content-Type: application/json
 
 {
-    "key": "{key}",
     "value": "{value}"
 }
 ```
