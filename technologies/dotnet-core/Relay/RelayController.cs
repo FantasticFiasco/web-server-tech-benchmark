@@ -15,9 +15,15 @@ namespace DotNetCore.Relay
 
 		[Route("{key}")]
 		[Produces("application/json")]
-		public Task<string> GetAsync(string key)
+		public async Task<KeyValuePair> GetAsync(string key)
 		{
-			return relayService.GetKeyValueAsync(key);
+			var keyValue = await relayService.GetKeyValueAsync(key);
+			
+			return new KeyValuePair
+			{
+				Key = key,
+				Value = keyValue.Value
+			};
 		}
 	}
 }

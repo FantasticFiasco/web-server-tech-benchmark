@@ -1,5 +1,7 @@
 # Web Server Technology Benchmark
 
+v1.1.0 - For a detailed documentation of the changes, please see the [change log](./CHANGELOG.md).
+
 ## Introduction
 
 This project is focused on comparing the performance of web servers implemented in a small subset of programming languages. The project currently has benchmarks for:
@@ -8,7 +10,7 @@ This project is focused on comparing the performance of web servers implemented 
 - Go
 - NodeJS
 
-A comparison between the languages can be found [here](./BENCHMARK.md).
+A comparison between the languages can be in the [benchmark](./BENCHMARK.md).
 
 ## Web Server
 
@@ -84,7 +86,6 @@ GET /store/{key} HTTP/1.1
 Content-Type: application/json
 
 {
-    "key": "{key}",
     "value": "{value}"
 }
 ```

@@ -140,9 +140,9 @@ Benchmarks have been configured to run for 300 seconds. A benchmark starts with 
 
 | Technology | Error     | Average Response Time (ms) | 90th Percentile (ms) | 95th Percentile (ms) | 99th Percentile (ms) | Throughput  |
 | ---------- | --------- | -------------------------- | -------------------- | -------------------- | -------------------- | ----------- |
-| .NET Core  | __0.00%__ | 69.56                      | 134                  | 141                  | __159__              | 2160.11     |
-| Go         | 0.01%     | __50.83__                  | __57__               | __67__               | 3081                 | __2908.68__ |
-| NodeJS     | __0.00%__ | 119.25                     | 280                  | 324                  | 363                  | 1261.04     |
+| .NET Core  | __0.00%__ | 74.20                      | 133                  | 144                  | __169__              | 2023.62     |
+| Go         | 0.01%     | __53.83__                  | __63__               | __69__               | 3150                 | __2726.88__ |
+| NodeJS     | __0.00%__ | 109.67                     | 235                  | 271                  | 325                  | 1370.02     |
 
 #### Response Time Over Threads
 

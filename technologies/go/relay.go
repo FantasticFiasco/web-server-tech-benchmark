@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
-	"io/ioutil"
 	"os"
+	"encoding/json"
 )
 
 var relayServiceHostname = os.Getenv("Relay:KeyValueServiceHostname")
@@ -18,8 +18,23 @@ func Relay(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	resp, _ := http.Get(url)
 	defer resp.Body.Close()
 
-	body, _ := ioutil.ReadAll(resp.Body)
+	var keyValue KeyValue
+	json.NewDecoder(resp.Body).Decode(&keyValue)
+
+	var keyValuePair = KeyValuePair {
+		Key: key,
+		Value: keyValue.Value,
+	}
 
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(body)
+	json.NewEncoder(w).Encode(keyValuePair)
+}
+
+type KeyValue struct {
+	Value	string	`json:"value"`
+}
+
+type KeyValuePair struct {
+	Key	string	`json:"key"`
+	Value	string	`json:"value"`
 }
