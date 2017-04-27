@@ -21,11 +21,3 @@ Push container
 ```
 docker push mcloone/web-server-benchmark-clojure:latest
 ```
-
-The environment variables to be set are (colon is not valid in a variable in Linux):
-Contacts_DatabaseHost
-Contacts_DatabaseName
-Contacts_DatabaseUsername
-Contacts_DatabasePassword
-Relay_KeyValueServiceHostname
-Relay_KeyValueServicePort

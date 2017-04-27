@@ -13,10 +13,10 @@ import (
 var db* sql.DB
 
 func InitDb() {
-	var databaseHost = os.Getenv("Contacts:DatabaseHost")
-	var databaseName = os.Getenv("Contacts:DatabaseName")
-	var databaseUsername = os.Getenv("Contacts:DatabaseUsername")
-	var databasePassword = os.Getenv("Contacts:DatabasePassword")
+	var databaseHost = os.Getenv("Contacts_DatabaseHost")
+	var databaseName = os.Getenv("Contacts_DatabaseName")
+	var databaseUsername = os.Getenv("Contacts_DatabaseUsername")
+	var databasePassword = os.Getenv("Contacts_DatabasePassword")
 
 	var connectionString = fmt.Sprintf("host=%s dbname=%s user=%s password=%s",
 		databaseHost,

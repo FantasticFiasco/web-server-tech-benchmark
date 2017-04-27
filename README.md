@@ -100,8 +100,8 @@ The relay service is dependent on the key/value service, and the implementation 
 
 | Name                          | Description                                         |
 | ----------------------------- | --------------------------------------------------- |
-| Relay:KeyValueServiceHostname | The hostname or IP address of the key/value service |
-| Relay:KeyValueServicePort     | The port of the key/value service                   |
+| Relay_KeyValueServiceHostname | The hostname or IP address of the key/value service |
+| Relay_KeyValueServicePort     | The port of the key/value service                   |
 
 #### Request
 
@@ -153,10 +153,10 @@ The contacts service is dependent on a database, and the implementation of the s
 
 | Name                      | Description                                       |
 | ------------------------- | ------------------------------------------------- |
-| Contacts:DatabaseHost     | The host of the database                          |
-| Contacts:DatabaseName     | The name of the database                          |
-| Contacts:DatabaseUsername | The username used when connecting to the database |
-| Contacts:DatabasePassword | The password used when connecting to the database |
+| Contacts_DatabaseHost     | The host of the database                          |
+| Contacts_DatabaseName     | The name of the database                          |
+| Contacts_DatabaseUsername | The username used when connecting to the database |
+| Contacts_DatabasePassword | The password used when connecting to the database |
 
 #### Create Contact Request
 

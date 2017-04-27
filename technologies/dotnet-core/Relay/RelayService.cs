@@ -11,8 +11,8 @@ namespace DotNetCore.Relay
 
 		public RelayService(IConfiguration configuration)
 		{
-			var hostname = configuration["Relay:KeyValueServiceHostname"];
-			var port = configuration["Relay:KeyValueServicePort"];
+			var hostname = configuration["Relay_KeyValueServiceHostname"];
+			var port = configuration["Relay_KeyValueServicePort"];
 
 			client = new HttpClient
 			{

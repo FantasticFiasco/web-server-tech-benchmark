@@ -20,5 +20,5 @@
   (not-found "<p>Page not found.</p>"))
 
 (defn -main [& args]
-  (http/run-server (site #'all-routes) {:port 8080})
+  (http/run-server (site #'all-routes) {:port 8090})
   (println "Server started"))
