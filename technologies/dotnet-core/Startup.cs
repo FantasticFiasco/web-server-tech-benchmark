@@ -49,14 +49,14 @@ namespace DotNetCore
 			get
 			{
 				return new Dictionary<string, string>
-            	{
+				{
 					{ "Relay_KeyValueServiceHostname", "localhost"},
 					{ "Relay_KeyValueServicePort", "8080"},
 					{ "Contacts_DatabaseHost", "localhost"},
 					{ "Contacts_DatabaseName", "web_server_tech_benchmarks" },
-                	{ "Contacts_DatabaseUsername", "postgres"},
-                	{ "Contacts_DatabasePassword", "password"}
-            	};
+					{ "Contacts_DatabaseUsername", "postgres"},
+					{ "Contacts_DatabasePassword", "password"}
+				};
 			}
 		}
 	}
