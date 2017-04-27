@@ -8,8 +8,8 @@ import (
 	"encoding/json"
 )
 
-var relayServiceHostname = os.Getenv("Relay:KeyValueServiceHostname")
-var relayServicePort = os.Getenv("Relay:KeyValueServicePort")
+var relayServiceHostname = os.Getenv("Relay_KeyValueServiceHostname")
+var relayServicePort = os.Getenv("Relay_KeyValueServicePort")
 
 func Relay(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	key := ps.ByName("key")

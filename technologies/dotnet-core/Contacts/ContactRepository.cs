@@ -17,10 +17,10 @@ namespace DotNetCore.Contacts
 		{
 			var connectionString = string.Format(
 				"Host={0};Username={1};Password={2};Database={3};Maximum Pool Size=300",
-				configuration["Contacts:DatabaseHost"],
-				configuration["Contacts:DatabaseUsername"],
-				configuration["Contacts:DatabasePassword"],
-				configuration["Contacts:DatabaseName"]);
+				configuration["Contacts_DatabaseHost"],
+				configuration["Contacts_DatabaseUsername"],
+				configuration["Contacts_DatabasePassword"],
+				configuration["Contacts_DatabaseName"]);
 
 			connectionProvider = () =>
 			{

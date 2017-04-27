@@ -50,12 +50,12 @@ namespace DotNetCore
 			{
 				return new Dictionary<string, string>
             	{
-					{ "Relay:KeyValueServiceHostname", "localhost"},
-					{ "Relay:KeyValueServicePort", "8080"},
-					{ "Contacts:DatabaseHost", "localhost"},
-					{ "Contacts:DatabaseName", "web_server_tech_benchmarks" },
-                	{ "Contacts:DatabaseUsername", "postgres"},
-                	{ "Contacts:DatabasePassword", "password"}
+					{ "Relay_KeyValueServiceHostname", "localhost"},
+					{ "Relay_KeyValueServicePort", "8080"},
+					{ "Contacts_DatabaseHost", "localhost"},
+					{ "Contacts_DatabaseName", "web_server_tech_benchmarks" },
+                	{ "Contacts_DatabaseUsername", "postgres"},
+                	{ "Contacts_DatabasePassword", "password"}
             	};
 			}
 		}
