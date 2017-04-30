@@ -11,7 +11,7 @@
                   :database (System/getenv "Contacts_DatabaseName")
                   :username (System/getenv "Contacts_DatabaseUsername")
                   :password (System/getenv "Contacts_DatabasePassword")
-                  :pool-size 10}))
+                  :pool-size 300}))
 
 (defn create-json-response [status body]
   {
