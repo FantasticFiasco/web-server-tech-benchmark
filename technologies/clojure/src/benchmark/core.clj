@@ -21,4 +21,4 @@
 
 (defn -main [& args]
   (http/run-server (site #'all-routes) {:port 8090})
-  (println "Server started"))
+  (println "Server started on port 8090"))
