@@ -20,7 +20,7 @@ All benchmarks are targeting a web server running in a Docker container on a EC2
 | Parameter              | Value               |
 | ---------------------- | ------------------- |
 | AWS region             | eu-west-1 (Ireland) |
-| EC2 instance type      | t2.micro            |
+| EC2 instance type      | m3.medium           |
 | CPU units              | 512                 |
 | Hard memory limit (MB) | 512                 |
 
