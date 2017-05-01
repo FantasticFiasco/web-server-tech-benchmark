@@ -3,15 +3,13 @@
            [clojure.data.json :as json]
            [org.httpkit.server :as http]))
 
-(def hostname (System/getenv "Contacts_DatabaseHost"))
-(def port 5432)
-
-(def db (pg/open-db {:hostname hostname
-                  :port port
+(def db (pg/open-db {:hostname (System/getenv "Contacts_DatabaseHost")
+                  :port 5432
                   :database (System/getenv "Contacts_DatabaseName")
                   :username (System/getenv "Contacts_DatabaseUsername")
                   :password (System/getenv "Contacts_DatabasePassword")
                   :pool-size 300}))
+
 
 (defn create-json-response [status body]
   {
@@ -19,6 +17,10 @@
     :headers {"Content-Type" "application/json"}
     :body    body
   })
+
+(defn create-json-response-with-location [status body location] 
+  (assoc-in
+    (create-json-response status body) [:headers "location"] location))
 
 (defn get-all-handler [req]
   (http/with-channel req channel
@@ -36,12 +38,11 @@
         (fn [rs err] 
           (let [result (first (:rows rs))]
             (http/send! channel 
-              {
-                :status  201
-                :headers {"Content-Type" "application/json" 
-                          "Location" (str "http://" hostname ":" port "/contacts/" (:id result))}
-                :body    (json/write-str (assoc result :firstName firstName :surname surname))
-              } true)))))))
+              (create-json-response-with-location 
+                201 
+                (json/write-str (assoc result :firstName firstName :surname surname))
+                (str "http://" (:server-name req) ":8090/contacts/" (:id result))
+              ) true)))))))
 
 (defn get-handler [req]
   (http/with-channel req channel
@@ -50,7 +51,6 @@
         (fn [rs err]           
           (http/send! channel 
             (create-json-response 200 (json/write-str (first (:rows rs)))) true))))))
-
 
 (defn delete-handler [req]
   (http/with-channel req channel
