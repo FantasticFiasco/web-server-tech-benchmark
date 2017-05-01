@@ -9,15 +9,15 @@ lein run
 
 Build Docker image
 ```
-docker build -t mcloone/web-server-benchmark-clojure:latest .
+docker build -t fantasticfiasco/web-server-benchmark-clojure:latest .
 ```
 
 Start container
 ```
-docker run -it --rm -P mcloone/web-server-benchmark-clojure
+docker run -it --rm -P fantasticfiasco/web-server-benchmark-clojure:latest
 ```
 
 Push container
 ```
-docker push mcloone/web-server-benchmark-clojure:latest
+docker push fantasticfiasco/web-server-benchmark-clojure:latest
 ```
