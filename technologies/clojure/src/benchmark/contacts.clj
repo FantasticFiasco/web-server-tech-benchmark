@@ -18,16 +18,22 @@
     :body    body
   })
 
+
 (defn create-json-response-with-location [status body location] 
   (assoc-in
     (create-json-response status body) [:headers "location"] location))
+
+(defn key-writer [key]
+  (if (= key :firstname)
+    "firstName"
+    (name key)))
 
 (defn get-all-handler [req]
   (http/with-channel req channel
     (pg/execute! db ["select id, firstName, surname from contact"] 
       (fn [rs err]        
         (http/send! channel 
-          (create-json-response 200 (json/write-str (:rows rs))) true)))))
+          (create-json-response 200 (json/write-str (:rows rs) :key-fn key-writer)) true)))))
 
 (defn create-handler [req]
   (http/with-channel req channel
@@ -47,10 +53,10 @@
 (defn get-handler [req]
   (http/with-channel req channel
     (let [id (-> req :params :id)]
-      (pg/execute! db ["select id, firstName, surname from contact where id = $1" id] 
-        (fn [rs err]           
-          (http/send! channel 
-            (create-json-response 200 (json/write-str (first (:rows rs)))) true))))))
+      (pg/execute! db ["select id, firstName, surname from contact where id = $1" id]
+        (fn [rs err]
+          (http/send! channel
+            (create-json-response 200 (json/write-str (first (:rows rs)) :key-fn key-writer)) true))))))
 
 (defn delete-handler [req]
   (http/with-channel req channel
