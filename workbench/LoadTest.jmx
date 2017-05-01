@@ -647,7 +647,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Header" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="768413261">Location: http://${hostname}:${port}/contacts/${contactId}</stringProp>
+                <stringProp name="1834332448">Location: http://${hostname}:.*/contacts/${contactId}</stringProp>
                 <stringProp name="2066544187">Content-Type: application/json</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_headers</stringProp>
