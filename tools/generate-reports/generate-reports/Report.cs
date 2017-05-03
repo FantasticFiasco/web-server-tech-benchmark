@@ -6,17 +6,17 @@ namespace GenerateReports
 {
     class Report
     {
+        private readonly Benchmark benchmark;
+
         public Report(Benchmark benchmark)
         {
-            Benchmark = benchmark ?? throw new ArgumentNullException(nameof(benchmark));
+            this.benchmark = benchmark ?? throw new ArgumentNullException(nameof(benchmark));
         }
-
-        public Benchmark Benchmark { get; }
 
         public void Generate()
         {
             string outputPath = Path.Combine(
-                Path.GetDirectoryName(Benchmark.FilePath),
+                Path.GetDirectoryName(benchmark.FilePath),
                 "report");
 
             Clean(outputPath);
@@ -34,7 +34,7 @@ namespace GenerateReports
         private void Generate(string outputPath)
         {
             Process
-                .Start("jmeter.bat", $"-g \"{Benchmark.FilePath}\" -o \"{outputPath}\"")
+                .Start("jmeter.bat", $"-g \"{benchmark.FilePath}\" -o \"{outputPath}\"")
                 .WaitForExit();
         }
     }

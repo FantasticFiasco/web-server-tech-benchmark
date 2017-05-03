@@ -11,13 +11,15 @@ namespace GenerateReports
         {
             string currentDirectory = Directory.GetCurrentDirectory();
 
-            IEnumerable<Report> reports = Benchmark.FindAll(currentDirectory)
-                .Select(benchmark => new Report(benchmark));
+            IEnumerable<Benchmark> benchmarks = Benchmark.FindAll(currentDirectory);
 
-            foreach (Report report in reports)
+            foreach (Benchmark benchmark in benchmarks)
             {
-                Console.WriteLine($"Generate report for {report.Benchmark.Name}...");
+                Console.WriteLine($"Formatting data for {benchmark.Name}...");
+                benchmark.FormatData();
 
+                Console.WriteLine($"Generating report for {benchmark.Name}...");
+                var report = new Report(benchmark);
                 report.Generate();
             }
 

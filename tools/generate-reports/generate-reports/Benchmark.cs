@@ -9,28 +9,46 @@ namespace GenerateReports
         public Benchmark(string filePath)
         {
             FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+            Name = GetName(FilePath);
         }
 
         public string FilePath { get; }
 
-        public string Name
+        public string Name { get; }
+
+        public void FormatData()
         {
-            get
+            string tempFilePath = $"{FilePath}.temp";
+
+            using (var reader = new StreamReader(FilePath))
+            using (var writer = new StreamWriter(tempFilePath))
             {
-                if (FilePath.Contains("dotnet"))
-                    return ".NET Core";
-
-                if (FilePath.Contains("go"))
-                    return "Go";
-
-                if (FilePath.Contains("nodejs"))
-                    return "NodeJS";
-
-                if (FilePath.Contains("clojure"))
-                    return "Clojure";
-
-                throw new Exception("Unsupported technology");
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    writer.WriteLine(line.Replace("Request", Name));
+                }
             }
+
+            File.Delete(FilePath);
+            File.Move(tempFilePath, FilePath);
+        }
+
+        private static string GetName(string filePath)
+        {
+            if (filePath.Contains("dotnet"))
+                return ".NET Core";
+
+            if (filePath.Contains("go"))
+                return "Go";
+
+            if (filePath.Contains("nodejs"))
+                return "NodeJS";
+
+            if (filePath.Contains("clojure"))
+                return "Clojure";
+            
+            throw new ArgumentException("Unsupported technology", nameof(filePath));
         }
 
         public static Benchmark[] FindAll(string path)
