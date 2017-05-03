@@ -1,37 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace GenerateReports
 {
-    class Benchmark
+    /// <summary>
+    /// Class describing the result of a benchmark.
+    /// </summary>
+    class Benchmark : IBenchmark
     {
         public Benchmark(string filePath)
         {
             FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
-            Name = GetName(FilePath);
+            TechnologyName = GetName(FilePath);
+            Type = GetType(FilePath);
         }
 
         public string FilePath { get; }
 
-        public string Name { get; }
+        public string TechnologyName { get; }
 
-        public void FormatData()
+        public string Type { get; }
+
+        public static IEnumerable<Benchmark> FindAll(string path)
         {
-            string tempFilePath = $"{FilePath}.temp";
-
-            using (var reader = new StreamReader(FilePath))
-            using (var writer = new StreamWriter(tempFilePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    writer.WriteLine(line.Replace("Request", Name));
-                }
-            }
-
-            File.Delete(FilePath);
-            File.Move(tempFilePath, FilePath);
+            return Directory.GetFiles(path, "*.csv", SearchOption.AllDirectories)
+                .Select(filePath => new Benchmark(filePath));
         }
 
         private static string GetName(string filePath)
@@ -51,11 +46,10 @@ namespace GenerateReports
             throw new ArgumentException("Unsupported technology", nameof(filePath));
         }
 
-        public static Benchmark[] FindAll(string path)
+        private static string GetType(string filePath)
         {
-            return Directory.GetFiles(path, "*.csv", SearchOption.AllDirectories)
-                .Select(filePath => new Benchmark(filePath))
-                .ToArray();
+            string directoryPath = Path.GetDirectoryName(filePath);
+            return Path.GetFileName(directoryPath);
         }
     }
 }

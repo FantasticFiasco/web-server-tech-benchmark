@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -11,15 +10,19 @@ namespace GenerateReports
         {
             string currentDirectory = Directory.GetCurrentDirectory();
 
-            IEnumerable<Benchmark> benchmarks = Benchmark.FindAll(currentDirectory);
+            ILookup<string, Benchmark> benchmarksByType = Benchmark.FindAll(currentDirectory)
+                .ToLookup(benchmark => benchmark.Type);
 
-            foreach (Benchmark benchmark in benchmarks)
+            foreach (var benchmarks in benchmarksByType)
             {
-                Console.WriteLine($"Formatting data for {benchmark.Name}...");
-                benchmark.FormatData();
+                string type = benchmarks.Key;
 
-                Console.WriteLine($"Generating report for {benchmark.Name}...");
-                var report = new Report(benchmark);
+                Console.WriteLine($"Merging benchmarks for {type}...");
+                var typedBenchmark = new TypedBenchmark(Path.Combine(currentDirectory, type), type, benchmarks);
+                typedBenchmark.Merge();
+
+                Console.WriteLine($"Generating report for {type}...");
+                var report = new Report(typedBenchmark);
                 report.Generate();
             }
 

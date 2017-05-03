@@ -6,9 +6,9 @@ namespace GenerateReports
 {
     class Report
     {
-        private readonly Benchmark benchmark;
+        private readonly IBenchmark benchmark;
 
-        public Report(Benchmark benchmark)
+        public Report(IBenchmark benchmark)
         {
             this.benchmark = benchmark ?? throw new ArgumentNullException(nameof(benchmark));
         }
@@ -17,7 +17,7 @@ namespace GenerateReports
         {
             string outputPath = Path.Combine(
                 Path.GetDirectoryName(benchmark.FilePath),
-                "report");
+                $"{benchmark.Type}-report");
 
             Clean(outputPath);
             Generate(outputPath);
