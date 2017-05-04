@@ -17,11 +17,11 @@ namespace GenerateReports
             {
                 string type = benchmarks.Key;
 
-                Console.WriteLine($"Generate comparison for benchmarks of type {type}...");
+                Console.WriteLine($"Generate comparison for benchmarks of type '{type}'...");
                 var fileName = Path.Combine(CurrentDirectory, $"{type}.csv");
                 var comparison = BenchmarkComparison.Generate(benchmarks, type, fileName);
 
-                Console.WriteLine($"Generating report for benchmarks of type {type}...");
+                Console.WriteLine($"Generating report for benchmarks of type '{type}'...");
                 Report.Generate(comparison);
             }
 
