@@ -1,6 +1,6 @@
 # Web Server Technology Benchmark
 
-v1.1.0 - For a detailed documentation of the changes, please see the [change log](./CHANGELOG.md).
+v2.0.0 - For a detailed documentation of the changes, please see the [change log](./CHANGELOG.md).
 
 ## Introduction
 
