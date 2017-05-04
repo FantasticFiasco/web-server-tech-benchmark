@@ -67,7 +67,7 @@ namespace GenerateReports
                             int index = headerColumns.Single(headerColumn => headerColumn.Name == "timeStamp").Index;
                             if (offset == null)
                             {
-                                offset = long.Parse(values[index]);
+                                offset = long.Parse(values[index]) - 946681200000;
                             }
                             // Timestamp should be relative to the first sample
                             values[index] = (long.Parse(values[index]) - offset).ToString();
