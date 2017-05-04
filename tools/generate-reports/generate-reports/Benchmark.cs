@@ -11,11 +11,11 @@ namespace GenerateReports
     /// </summary>
     public class Benchmark
     {
-        public Benchmark(string filePath)
+        private Benchmark(string filePath)
         {
-            FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
-            TechnologyName = ParseTechnologyName(FilePath);
-            Type = ParseType(FilePath);
+            FilePath = filePath;
+            TechnologyName = ParseTechnologyName(filePath);
+            Type = ParseType(filePath);
         }
 
         public string FilePath { get; }

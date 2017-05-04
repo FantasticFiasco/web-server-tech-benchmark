@@ -1,26 +1,21 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 
 namespace GenerateReports
 {
-    class Report
+    /// <summary>
+    /// Class responsible for generating a report based on a benchmark comparison.
+    /// </summary>
+    public static class Report
     {
-        private readonly BenchmarkComparison benchmark;
-
-        public Report(BenchmarkComparison benchmark)
-        {
-            this.benchmark = benchmark ?? throw new ArgumentNullException(nameof(benchmark));
-        }
-
-        public void Generate()
+        public static void Generate(BenchmarkComparison comparison)
         {
             string outputPath = Path.Combine(
-                Path.GetDirectoryName(benchmark.FilePath),
-                $"{benchmark.Type}-report");
+                Path.GetDirectoryName(comparison.FilePath),
+                $"report-{comparison.Type}");
 
             Clean(outputPath);
-            Generate(outputPath);
+            Generate(comparison, outputPath);
         }
 
         private static void Clean(string outputPath)
@@ -31,10 +26,10 @@ namespace GenerateReports
             }
         }
 
-        private void Generate(string outputPath)
+        private static void Generate(BenchmarkComparison comparison, string outputPath)
         {
             Process
-                .Start("jmeter.bat", $"-g \"{benchmark.FilePath}\" -o \"{outputPath}\"")
+                .Start("jmeter.bat", $"-g \"{comparison.FilePath}\" -o \"{outputPath}\"")
                 .WaitForExit();
         }
     }
