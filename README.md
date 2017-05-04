@@ -7,6 +7,7 @@ v1.1.0 - For a detailed documentation of the changes, please see the [change log
 This project is focused on comparing the performance of web servers implemented in a small subset of programming languages. The project currently has benchmarks for:
 
 - .NET Core
+- Clojure
 - Go
 - NodeJS
 
