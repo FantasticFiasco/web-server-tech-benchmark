@@ -18,8 +18,8 @@ namespace GenerateReports
                 string type = benchmarks.Key;
 
                 Console.WriteLine($"Merging benchmarks for {type}...");
-                var typedBenchmark = new TypedBenchmark(Path.Combine(currentDirectory, type), type, benchmarks);
-                typedBenchmark.Merge();
+                var typedBenchmark = new BenchmarkComparison(benchmarks, type, Path.Combine(currentDirectory, type));
+                typedBenchmark.CreateComparison();
 
                 Console.WriteLine($"Generating report for {type}...");
                 var report = new Report(typedBenchmark);

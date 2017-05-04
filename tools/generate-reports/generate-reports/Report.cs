@@ -6,9 +6,9 @@ namespace GenerateReports
 {
     class Report
     {
-        private readonly IBenchmark benchmark;
+        private readonly BenchmarkComparison benchmark;
 
-        public Report(IBenchmark benchmark)
+        public Report(BenchmarkComparison benchmark)
         {
             this.benchmark = benchmark ?? throw new ArgumentNullException(nameof(benchmark));
         }

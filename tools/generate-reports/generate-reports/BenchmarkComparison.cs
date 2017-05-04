@@ -5,22 +5,26 @@ using System.Linq;
 
 namespace GenerateReports
 {
-    class TypedBenchmark : IBenchmark
+    /// <summary>
+    /// Class capable of prodicing a comparison of multiple benchmarks, i.e. producing a new
+    /// benchmark by merging them together.
+    /// </summary>
+    public class BenchmarkComparison
     {
         private readonly IEnumerable<Benchmark> benchmarks;
 
-        public TypedBenchmark(string filePath, string type, IEnumerable<Benchmark> benchmarks)
+        public BenchmarkComparison(IEnumerable<Benchmark> benchmarks, string type, string filePath)
         {
-            FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
-            Type = type ?? throw new ArgumentNullException(nameof(type));
             this.benchmarks = benchmarks ?? throw new ArgumentNullException(nameof(benchmarks));
+            Type = type ?? throw new ArgumentNullException(nameof(type));
+            FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
         }
-
-        public string FilePath { get; }
 
         public string Type { get; }
 
-        public void Merge()
+        public string FilePath { get; }
+        
+        public void CreateComparison()
         {
             using (var writer = new StreamWriter(FilePath))
             {

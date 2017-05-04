@@ -6,15 +6,16 @@ using System.Linq;
 namespace GenerateReports
 {
     /// <summary>
-    /// Class describing the result of a benchmark.
+    /// Class describing the results of a specific benchmark type
+    /// ['health', 'echo', 'relay', 'contacts'] tested with a specific technology.
     /// </summary>
-    class Benchmark : IBenchmark
+    public class Benchmark
     {
         public Benchmark(string filePath)
         {
             FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
-            TechnologyName = GetName(FilePath);
-            Type = GetType(FilePath);
+            TechnologyName = ParseTechnologyName(FilePath);
+            Type = ParseType(FilePath);
         }
 
         public string FilePath { get; }
@@ -29,7 +30,7 @@ namespace GenerateReports
                 .Select(filePath => new Benchmark(filePath));
         }
 
-        private static string GetName(string filePath)
+        private static string ParseTechnologyName(string filePath)
         {
             if (filePath.Contains("dotnet"))
                 return ".NET Core";
@@ -43,10 +44,10 @@ namespace GenerateReports
             if (filePath.Contains("clojure"))
                 return "Clojure";
             
-            throw new ArgumentException("Unsupported technology", nameof(filePath));
+            throw new ArgumentException($"The file path '{filePath}' is describing an unsupported technology");
         }
 
-        private static string GetType(string filePath)
+        private static string ParseType(string filePath)
         {
             string directoryPath = Path.GetDirectoryName(filePath);
             return Path.GetFileName(directoryPath);
