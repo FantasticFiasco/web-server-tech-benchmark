@@ -1,4 +1,7 @@
-public class KeyValue
+namespace DotNetCore.Relay
 {
-    public string Value { get; set; }
+    public class KeyValue
+    {
+        public string Value { get; set; }
+    }
 }

@@ -1,29 +1,22 @@
-﻿using System.Collections.Generic;
-using DotNetCore.Contacts;
+﻿using DotNetCore.Contacts;
 using DotNetCore.Relay;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetCore
 {
 	public class Startup
 	{
-		private readonly IConfigurationRoot configuration;
-
-		public Startup(IHostingEnvironment env)
+		public Startup(IConfiguration configuration)
 		{
-			var builder = new ConfigurationBuilder()
-				.AddInMemoryCollection(DefaultConfiguration)
-				.AddEnvironmentVariables();
+            Configuration = configuration;
+        }
 
-			configuration = builder.Build();
-		}
+        public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
-		public void ConfigureServices(IServiceCollection services)
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
 		{
 			// Relay
 			services.AddSingleton<RelayService>();
@@ -31,33 +24,14 @@ namespace DotNetCore
 			// Contacts
 			services.AddSingleton<ContactRepository>();
 
-			// Shared
-			services.AddSingleton<IConfiguration>(configuration);
-
 			// Framework
 			services.AddMvc();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		public void Configure(IApplicationBuilder app)
 		{
 			app.UseMvc();
-		}
-
-		private static Dictionary<string, string> DefaultConfiguration
-		{
-			get
-			{
-				return new Dictionary<string, string>
-				{
-					{ "Relay_KeyValueServiceHostname", "localhost"},
-					{ "Relay_KeyValueServicePort", "8080"},
-					{ "Contacts_DatabaseHost", "localhost"},
-					{ "Contacts_DatabaseName", "web_server_tech_benchmarks" },
-					{ "Contacts_DatabaseUsername", "postgres"},
-					{ "Contacts_DatabasePassword", "password"}
-				};
-			}
 		}
 	}
 }

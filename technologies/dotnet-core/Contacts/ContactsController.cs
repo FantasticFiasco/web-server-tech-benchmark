@@ -18,7 +18,7 @@ namespace DotNetCore.Contacts
 		public async Task<IActionResult> PostAsync([FromBody] Contact contact)
 		{
 			contact = await repository.AddAsync(contact);
-
+            
 			return CreatedAtAction(nameof(GetAsync), new { id = contact.Id }, contact);
 		}
 
