@@ -30,7 +30,7 @@
     "restify": "7.4.0"
   },
   "devDependencies": {
-    "eslint": "5.11.1",
+    "eslint": "5.12.0",
     "eslint-config-google": "0.11.0"
   }
 }
