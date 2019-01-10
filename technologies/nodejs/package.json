@@ -27,7 +27,7 @@
   "dependencies": {
     "pg": "7.7.1",
     "request": "2.88.0",
-    "restify": "7.4.0"
+    "restify": "7.5.0"
   },
   "devDependencies": {
     "eslint": "5.12.0",
