@@ -7,7 +7,7 @@
                  [javax.servlet/servlet-api "2.5"]
                  [ring/ring-core "1.6.0-RC2"]
                  [http-kit "2.2.0"]
-                 [compojure "1.5.2"]
+                 [compojure "1.6.1"]
                  [org.clojure/data.json "0.2.6"]
                  [alaisi/postgres.async "0.8.0"]]
   :main ^:skip-aot benchmark.core
